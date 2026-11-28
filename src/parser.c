@@ -6,7 +6,7 @@
 /*   By: jifoo <jifoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/28 17:11:10 by jifoo             #+#    #+#             */
-/*   Updated: 2026/11/28 18:36:17 by jifoo            ###   ########.fr       */
+/*   Updated: 2026/11/28 23:02:27 by jifoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int validate_input(t_params *params)
     
 }
 
-int parse_input(t_params *params, char **args)
+int parse_input(t_hub *hub, t_params *params, char **args)
 {
     params->nb_coders = ft_atol(args[0]);
     params->time_to_burnout = ft_atol(args[1]) ;
@@ -46,15 +46,15 @@ int parse_input(t_params *params, char **args)
     params->dongle_cooldown = ft_atol(args[6]);
     params->scheduler = args[7];
     /*pas oublier de retirer*/
-    printf("%ld\n", params->nb_coders);
-    printf("%ld\n", params->time_to_burnout);
-    printf("%ld\n", params->time_to_compute);
-    printf("%ld\n", params->time_to_debug);
-    printf("%ld\n", params->time_to_refactor);
-    printf("%ld\n", params->nb_compiles_required);
-    printf("%ld\n", params->dongle_cooldown);
-    printf("%s\n", params->scheduler);
+    printf("nb_coders: %ld\n", params->nb_coders);
+    printf("time_to_burnout: %ld\n", params->time_to_burnout);
+    printf("time_to_compute: %ld\n", params->time_to_compute);
+    printf("time_to_debug: %ld\n", params->time_to_debug);
+    printf("time_to_refactor: %ld\n", params->time_to_refactor);
+    printf("nb_compiles_required: %ld\n", params->nb_compiles_required);
+    printf("dongle_cooldown: %ld\n", params->dongle_cooldown);
+    printf("scheduler: %s\n", params->scheduler);
     if (!validate_input(params))
-        return (0);
+        return (init_hub(hub, params));
     return (1);
 }

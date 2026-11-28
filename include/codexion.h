@@ -6,7 +6,7 @@
 /*   By: jifoo <jifoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/28 17:00:18 by jifoo             #+#    #+#             */
-/*   Updated: 2026/11/28 18:35:24 by jifoo            ###   ########.fr       */
+/*   Updated: 2026/11/28 23:01:27 by jifoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,33 @@ typedef struct s_params
 
 }   t_params;
 
+typedef struct s_coder
+{
+    int     id;
+    long    n_compiles;
+    long    last_compile_start;
+}   t_coder;
+
+typedef struct s_dongle
+{
+    int             id;
+    pthread_mutex_t mutex;   
+}   t_dongle;
+
+typedef struct s_hub
+{
+    t_params    params;
+    t_coder     *coders;
+    t_dongle    *dongles;
+}   t_hub;
+
 /*utils*/
 int raise_error(char *str);
 long    ft_atol(char *str);
 /*parser*/
 int validate_input(t_params *params);
-int parse_input(t_params *params, char **args);
-
+int parse_input(t_hub *hub, t_params *params, char **args);
+/*init*/
+int init_hub(t_hub *hub, t_params *params);
+void    cleanup_hub(t_hub *hub, t_params *params);
 #endif
