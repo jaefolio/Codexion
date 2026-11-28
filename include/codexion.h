@@ -6,7 +6,7 @@
 /*   By: jifoo <jifoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/28 17:00:18 by jifoo             #+#    #+#             */
-/*   Updated: 2026/11/28 23:01:27 by jifoo            ###   ########.fr       */
+/*   Updated: 2026/11/28 23:44:41 by jifoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,7 @@ int parse_input(t_hub *hub, t_params *params, char **args);
 /*init*/
 int init_hub(t_hub *hub, t_params *params);
 void    cleanup_hub(t_hub *hub, t_params *params);
+int init_coders(t_hub *hub, t_params *params);
+int init_dongles(t_hub *hub, t_params *params);
+
 #endif
